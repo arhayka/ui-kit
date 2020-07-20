@@ -1,0 +1,29 @@
+# FileField
+
+## Пример использования
+
+```ts
+import React from 'react';
+import { FileField } from '@gpn-design/uikit/FileField';
+import { Button } from '@gpn-design/uikit/Button';
+
+const App = () => {
+  const [value, setValue] = useState<FileFieldProps['value']>(null);
+  const handleChange: FileFieldProps['onChange'] = ({ value }) => setValue(value);
+
+  return (
+    <FileField onChange={handleChange} value={value} multiple>
+      {({ onClick }) => <Button label="Выбрать файл" onClick={onClick} />}
+    </FileField>
+  );
+};
+```
+
+## Свойства
+
+| Свойство  | Тип                                                                      | По умолчанию | Описание                |
+| --------- | ------------------------------------------------------------------------ | ------------ | ----------------------- |
+| onChange  | `(object: { e: React.ChangeEvent; value: FileList , null }) => void;`    | -            | событие выбора файла    |
+| value     | `FileList , null`                                                        | -            | Выбранные файлы         |
+| children  | `React.ComponentType<{ onClick: React.MouseEventHandler<HTMLElement> }>` | -            | Компонент представления |
+| multiple? | `boolean`                                                                | -            | Множественный выбор     |
